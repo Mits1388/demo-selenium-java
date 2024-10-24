@@ -12,7 +12,24 @@ public class LoginTest {
     public void test1() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://secure.login.gov/");
-        String singInXpath = "//*[@id=\"main-content\"]/div/nav/ul/li[1]/a";
+
+        String singInXpath = "/html/body/main/div/nav/ul/li[1]/a";
+        By singInBy = By.xpath(singInXpath);
+        WebElement singInElement = driver.findElement(singInBy);
+        singInElement.click();
+    }
+
+    @Test
+    public void test2() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://secure.login.gov/");
+
+        String inputAddressXpath = "/html/body/main/div/form/lg-validated-field/div/input";
+        By inputAddressBy = By.xpath(inputAddressXpath);
+        WebElement inputAddressElement = driver.findElement(inputAddressBy);
+        inputAddressElement.sendKeys("testA@test.com");
+
+        String singInXpath = "/html/body/main/div/form/lg-submit-button/button";
         By singInBy = By.xpath(singInXpath);
         WebElement singInElement = driver.findElement(singInBy);
         singInElement.click();
