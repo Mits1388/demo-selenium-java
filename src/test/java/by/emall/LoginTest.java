@@ -13,8 +13,7 @@ public class LoginTest {
         driver.get("https://emall.by/login/password");
         LoginPageMall loginPage = new LoginPageMall(driver);
         loginPage.clickButton();
-        Assertions.assertEquals("Поле \"Номер телефона\" обязательно для заполнения.\n" +
-                "Поле \"Пароль\" обязательно для заполнения.", loginPage.textEmptyPhone());
+        Assertions.assertEquals(LoginMessage.EXPECTED_EMPTY_FIELDS_XPATH, loginPage.textEmptyPhone());
     }
 
     @Test
@@ -22,9 +21,8 @@ public class LoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://emall.by/login/password");
         LoginPageMall loginPage = new LoginPageMall(driver);
-        loginPage.inputPhone();
-        loginPage.clickButton();
-        Assertions.assertEquals("Поле \"Пароль\" обязательно для заполнения.", loginPage.textEmptyPassword());
+        loginPage.inputPhone().clickButton();
+        Assertions.assertEquals(LoginMessage.EXPECTED_EMPTY_PASSWORD_XPATH, loginPage.textEmptyPassword());
     }
 
     @Test
@@ -32,9 +30,8 @@ public class LoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://emall.by/login/password");
         LoginPageMall loginPage = new LoginPageMall(driver);
-        loginPage.inputPassword();
-        loginPage.clickButton();
-        Assertions.assertEquals("Поле \"Номер телефона\" обязательно для заполнения.", loginPage.textEmptyPhone());
+        loginPage.inputPassword().clickButton();
+        Assertions.assertEquals(LoginMessage.EXPECTED_EMPTY_PHONE_XPATH, loginPage.textEmptyPhone());
     }
 
     @Test
@@ -42,9 +39,7 @@ public class LoginTest {
         WebDriver driver = new ChromeDriver();
         driver.get("https://emall.by/login/password");
         LoginPageMall loginPage = new LoginPageMall(driver);
-        loginPage.inputPhone();
-        loginPage.inputPassword();
-        loginPage.clickButton();
-        Assertions.assertEquals("Неверный логин или пароль", loginPage.textInvalidMessage());
+        loginPage.inputPhone().inputPassword().clickButton();
+        Assertions.assertEquals(LoginMessage.EXPECTED_INVALID_MESSAGE_XPATH, loginPage.textInvalidMessage());
     }
 }

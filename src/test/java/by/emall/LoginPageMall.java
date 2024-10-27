@@ -15,23 +15,25 @@ public class LoginPageMall {
         this.driver = driver;
     }
 
-    public void clickButton() {
+    public LoginPageMall clickButton() {
         By by = By.xpath(LoginXpath.BUTTON_SIGN_IN_XPATH);
         WebElement element = driver.findElement(by);
         element.click();
+        return this;
     }
 
-    public void inputPassword() {
+    public LoginPageMall inputPassword() {
         By by = By.xpath(LoginXpath.INPUT_PASSWORD_XPATH);
         WebElement element = driver.findElement(by);
         element.sendKeys("fd#456a$AS");
+        return this;
     }
 
-    public void inputPhone() {
+    public LoginPageMall inputPhone() {
         By by = By.xpath(LoginXpath.INPUT_PHONE_XPATH);
         WebElement element = driver.findElement(by);
         element.sendKeys("298554234");
-
+        return this;
     }
 
     public String textEmptyPhone() {
