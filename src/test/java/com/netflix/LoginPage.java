@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 
@@ -17,6 +16,7 @@ public class LoginPage {
     }
 
     public void clickButton() {
+        By buttonBy = By.xpath(LoginXpath.BUTTON_SIGN_IN_XPATH);
         By buttonBy = By.xpath(LoginXpath.BUTTON_XPATH);
         WebElement buttonElement = driver.findElement(buttonBy);
         buttonElement.click();
@@ -34,7 +34,24 @@ public class LoginPage {
         passwordElement.sendKeys("fd4@k$b&");
     }
 
+    public String textEmptyEmail() {
+        By textBy = By.xpath(LoginMessage.EMPTY_EMAIL_XPATH);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement textElement = wait.until(ExpectedConditions.presenceOfElementLocated(textBy));
+        return textElement.getText();
+    }
+
+    public String textEmptyPassword() {
+        By textBy = By.xpath(LoginMessage.EMPTY_PASSWORD_XPATH);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement textElement = wait.until(ExpectedConditions.presenceOfElementLocated(textBy));
+        return textElement.getText();
+    }
+
+    public String textInvalidMessage() {
+
     public String text() {
+
         By textBy = By.xpath(LoginMessage.INVALID_MESSAGE_XPATH);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement textElement = wait.until(ExpectedConditions.presenceOfElementLocated(textBy));
