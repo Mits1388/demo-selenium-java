@@ -17,6 +17,7 @@ public class LoginPage {
 
     public void clickButton() {
         By buttonBy = By.xpath(LoginXpath.BUTTON_SIGN_IN_XPATH);
+        By buttonBy = By.xpath(LoginXpath.BUTTON_XPATH);
         WebElement buttonElement = driver.findElement(buttonBy);
         buttonElement.click();
     }
@@ -48,6 +49,9 @@ public class LoginPage {
     }
 
     public String textInvalidMessage() {
+
+    public String text() {
+
         By textBy = By.xpath(LoginMessage.INVALID_MESSAGE_XPATH);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement textElement = wait.until(ExpectedConditions.presenceOfElementLocated(textBy));
